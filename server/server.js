@@ -1,5 +1,6 @@
 const express = require("express");
 const db = require("./config/db");
+const cors = require("cors");
 
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
@@ -7,6 +8,7 @@ if (process.env.NODE_ENV !== "production") {
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 db();
 const Guest = require("./models/guest");
 
@@ -34,6 +36,15 @@ app.post("/guests", async (req, res) => {
 });
 
 app.get("/guests", async (req, res) => {
+  try {
+    const guests = await Guest.find();
+    res.json({ guests });
+  } catch (e) {
+    console.log(e);
+  }
+});
+
+app.get("/guests/:code", async (req, res) => {
   try {
     const uniqueCode = req.body.uniqueCode;
 
