@@ -17,14 +17,16 @@ app.post("/guests", async (req, res) => {
     const names = req.body.names;
     const uniqueCode = req.body.uniqueCode;
     const veggie = req.body.veggie;
+    const attendance = req.body.attendance;
 
     await Guest.create({
       names,
       uniqueCode,
       veggie,
+      attendance,
     });
 
-    res.json({ names, uniqueCode, veggie });
+    res.json({ names, uniqueCode, veggie, attendance });
   } catch (e) {
     res.sendStatus(400);
     console.log(e);
