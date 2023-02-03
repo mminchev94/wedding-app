@@ -13,15 +13,22 @@ const Guest = require("./models/guest");
 const port = process.env.PORT || 3000;
 
 app.post("/guests", async (req, res) => {
-  const names = req.body.names;
-  const uniqueCode = req.body.uniqueCode;
+  try {
+    const names = req.body.names;
+    const uniqueCode = req.body.uniqueCode;
+    const veggie = req.body.veggie;
 
-  const guest = await Guest.create({
-    names,
-    uniqueCode,
-  });
+    await Guest.create({
+      names,
+      uniqueCode,
+      veggie,
+    });
 
-  res.json({ names, uniqueCode });
+    res.json({ names, uniqueCode, veggie });
+  } catch (e) {
+    res.sendStatus(400);
+    console.log(e);
+  }
 });
 
 app.get("/guests", async (req, res) => {
