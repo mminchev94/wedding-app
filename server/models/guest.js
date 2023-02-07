@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 
 const guestSchema = new mongoose.Schema({
-  names: "",
-  uniqueCode: "",
-  attendance: false,
-  veggie: {},
+  names: String,
+  uniqueCode: String,
+  attendance: Boolean,
+  veggie: Object,
 });
 
 const Guest = mongoose.model("Guest", guestSchema);
