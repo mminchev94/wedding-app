@@ -1,6 +1,7 @@
 const express = require("express");
 const db = require("./config/db");
 const cors = require("cors");
+const Guest = require("./models/guest");
 
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
@@ -10,7 +11,6 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 db();
-const Guest = require("./models/guest");
 
 const port = process.env.PORT || 3000;
 
@@ -46,7 +46,7 @@ app.get("/guests", async (req, res) => {
 
 app.get("/guests/:code", async (req, res) => {
   try {
-    const uniqueCode = req.body.uniqueCode;
+    const uniqueCode = req.params.code;
 
     const guest = await Guest.findOne({
       uniqueCode,
