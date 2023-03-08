@@ -27,6 +27,24 @@ const fetchGuests = async (req, res) => {
   }
 };
 
+const updateGuestAttendance = async (req, res) => {
+  try {
+    const guestPassword = req.params.password;
+    await Guest.findOneAndUpdate(
+      { password: guestPassword },
+      {
+        attendance: true,
+      }
+    );
+
+    const guest = await Guest.findOne({ password: guestPassword });
+
+    res.json({ guest });
+  } catch (e) {
+    console.log(e);
+  }
+};
+
 const fetchGuest = async (req, res) => {
   try {
     const { password } = req.params;
@@ -37,10 +55,10 @@ const fetchGuest = async (req, res) => {
 
     if (!guest) return res.sendStatus(404);
 
-    res.json({ guest: guest.names });
+    res.json({ guest });
   } catch (e) {
     console.log(e);
   }
 };
 
-module.exports = { addGuests, fetchGuests, fetchGuest };
+module.exports = { addGuests, fetchGuests, updateGuestAttendance, fetchGuest };
