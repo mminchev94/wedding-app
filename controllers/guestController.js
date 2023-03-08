@@ -2,19 +2,16 @@ const Guest = require("../models/guest");
 
 const addGuests = async (req, res) => {
   try {
-    const names = req.body.names;
-    const uniqueCode = req.body.uniqueCode;
-    const veggie = req.body.veggie;
-    const attendance = req.body.attendance;
+    const { names, uniqueCode, attendance, isFemale } = req.body;
 
     await Guest.create({
       names,
       uniqueCode,
-      veggie,
       attendance,
+      isFemale,
     });
 
-    res.json({ names, uniqueCode, veggie, attendance });
+    res.json({ names, uniqueCode, attendance, isFemale });
   } catch (e) {
     res.sendStatus(400);
     console.log(e);

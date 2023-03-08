@@ -4,7 +4,7 @@ const guestSchema = new mongoose.Schema({
   names: String,
   uniqueCode: String,
   attendance: Boolean,
-  veggie: Object,
+  isFemale: Boolean,
 });
 
 const Guest = mongoose.model("Guest", guestSchema);
