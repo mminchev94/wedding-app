@@ -18,7 +18,7 @@ app.post("/guests", guestController.addGuests);
 
 app.get("/guests", guestController.fetchGuests);
 
-app.get("/guests/:code", guestController.fetchGuest);
+app.get("/guests/:password", guestController.fetchGuest);
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

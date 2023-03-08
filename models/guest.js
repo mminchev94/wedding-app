@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const guestSchema = new mongoose.Schema({
   names: String,
-  uniqueCode: String,
+  password: String,
   attendance: Boolean,
   isFemale: Boolean,
 });
