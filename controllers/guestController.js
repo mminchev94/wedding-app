@@ -52,4 +52,4 @@ const fetchGuest = async (req, res) => {
   }
 };
 
-module.exports = { addGuests, fetchGuests, updateGuestAttendance, fetchGuest };
+module.exports = { addGuests, updateGuestAttendance, fetchGuest };
