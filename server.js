@@ -16,8 +16,6 @@ const port = process.env.PORT || 3000;
 
 app.post("/guests", guestController.addGuests);
 
-app.get("/guests", guestController.fetchGuests);
-
 app.put("/guests/:password", guestController.updateGuestAttendance);
 
 app.get("/guests/:password", guestController.fetchGuest);

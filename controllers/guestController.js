@@ -18,15 +18,6 @@ const addGuests = async (req, res) => {
   }
 };
 
-const fetchGuests = async (req, res) => {
-  try {
-    const guests = await Guest.find();
-    res.json({ guests });
-  } catch (e) {
-    console.log(e);
-  }
-};
-
 const updateGuestAttendance = async (req, res) => {
   try {
     const guestPassword = req.params.password;
