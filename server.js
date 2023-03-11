@@ -20,6 +20,10 @@ app.put("/guests/:password", guestController.updateGuestAttendance);
 
 app.get("/guests/:password", guestController.fetchGuest);
 
+app.get("/invitation", (req, res) => {
+  res.sendStatus(200);
+});
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
