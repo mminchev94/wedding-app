@@ -38,7 +38,7 @@ const updateGuestAttendance = async (req, res) => {
 
 const fetchGuest = async (req, res) => {
   try {
-    const { password } = req.params.toLowerCase();
+    const { password } = req.params;
 
     const guest = await Guest.findOne({
       password,
